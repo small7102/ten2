@@ -1,3 +1,3 @@
-function a(){
+function add(){
     console.log('sss')
 }
