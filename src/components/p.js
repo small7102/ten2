@@ -1,1 +1,3 @@
-1111
+function a(){
+    console.log('sss')
+}
