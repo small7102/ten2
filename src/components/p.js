@@ -1,5 +1,5 @@
 function add(){
-    console.log('ssssssss8+')
+    console.log('ssssssss888')
 }
 
 export default add
