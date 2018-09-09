@@ -1,1 +1,3 @@
-1111
+function bug(){
+    console.log('src')
+}
