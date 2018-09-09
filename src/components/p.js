@@ -1,3 +1,3 @@
-function bug(){
-    console.log('src')
+function add(){
+    console.log('sss')
 }
