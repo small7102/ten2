@@ -9,8 +9,9 @@
     "start": "npm run dev",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run e2e",
-    "build": "node build/build.js",
-    "build:test": "node build/test.js"
+    "build": "cross-env huanjing=production node build/build.js node build/build.js",
+    "build:test": "node build/test.js",
+    "build:testing": "cross-env huanjing=test node build/build.js"
   },
   "dependencies": {
     "aws-sdk": "^2.302.0",
@@ -24,7 +25,8 @@
     "stylus-loader": "^3.0.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "cross-env": "^1.0.8"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

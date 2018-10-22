@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta content="maximum-dpr=2" name="flexible" />
+  <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.2/??flexible_css.js,flexible.js"></script>
+  <title>Document</title>
+  <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        position: relative;
+      }
+      #parent{
+        width: 200px;
+        height: 200px;
+        background: lightblue;
+        margin-top: 10px
+      }
+      #child{
+        width: 100px;
+        height: 100px;
+        background: lightcoral;
+        margin: 50px auto
+      }
+      .second-box{
+        margin: 10px auto;
+        background: lightblue;
+        height: 400px;
+      }
+      .top{
+        overflow: hidden;
+      }
+      .aside {
+        width: 300px;
+        height: 150px;
+        background: #f66;
+        float: left;
+    }
+    .c-aside{
+      float: left;
+      width: 100px;
+      height: 100px;
+      background: lightcyan
+    }
+    .c-main{
+      height: 400px;
+      background: lavenderblush;
+      overflow: hidden;
+    }
+
+    .main {
+        height: 200px;
+        background: #fcc;
+        overflow: hidden;
+    }
+    .m-parent::after, .m-child{
+      display: inline-block;
+      vertical-align: middle
+    }
+    .m-parent::after{
+      content: '';
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- <div id="parent">
+    <div id="child"></div>
+  </div>
+  <div class="second-box">
+    <div class="aside"></div>
+    <div class="main"></div>
+  </div> -->
+  <div class="wrap">
+    <!-- <div class="top">
+    <div class="aside">
+      <div class="c-aside"></div>
+      <div class="c-main"></div>
+    </div>
+      <div class="main"></div>
+    </div>
+
+    <div class="floor" style="padding: 10px 0; background: lavenderblush;margin-top: 10px;overflow: hidden;">
+      <div class="ww" style="float: left; background: #fcc; height: 200px;width: 200px"></div>
+      <div class="ww" style="float: left; background: lawngreen; height: 200px;width: 200px"></div>
+    </div> -->
+
+    <div class="floor" style="margin-top: 10px; background: rgb(183, 194, 31)">
+
+            <div id="child"></div>
+            <div id="child"></div>
+
+    </div>
+    <div class="floor">
+      <div class="m-parent" style="background: lavenderblush; height: 200px">
+        <div class="m-child" style="width: 20px;padding: 20px">
+          <div style="background: lawngreen;height: 50px;"></div>
+          <input type="file" onchange="upload(this)" />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  function upload(e) {
+    console.log(e.files)
+  }
+  var parent = document.getElementById('parent');
+  var child = document.getElementById('child');
+
+  // child.addEventListener('click', function(event){
+  //   console.log(event.target)
+  //   console.log('child')
+  //   event.stopPropagation()
+  // }, false)
+  // parent.addEventListener('click', function(event){
+  //   console.log(event.target)
+  //   console.log('parent')
+  // }, false);
+
+
+eventUtils = {
+  addEvent: function(element, type, handler) {
+    if(element.addEventListener) {
+      element.addEventListener(type, handler, false)
+    }else if(element.attachEvent){
+      element.attachEvent('on'+type, function(){
+        handler.call(element)
+      });
+    } else {
+      element['on'+type]=handler
+    }
+  },
+  //移除事件
+  removeEvent: function(element, type, handler){
+    if (element,removeEventListener){
+      element.removeEventListener(type, handler, false)
+    } else if (element.detachEvent) {
+      element.detachEvent('on' + type, handler)
+    } else {
+      element['on' + type] = null
+    }
+  },
+  stopPropagation: function(ev) {
+    if (ev.stopPropagation) {
+      ev.stopPropagation()
+    } else {
+      ev.cancelBubble = true
+    }
+  },
+  preventDefault: function(ev) {
+    ev.preventDefault ? ev.preventDefault() : ev.returnValue = false
+  },
+  getTarget: function(ev) {
+    return ev.target || ev.srcElement
+  }
+}
+
+eventUtils.addEvent(child, 'click', function(ev){
+  console.log('child')
+  eventUtils.stopPropagation(ev)
+})
+
+eventUtils.addEvent(parent, 'click', function(){
+  console.log('parent')
+})
+</script>
+</html>

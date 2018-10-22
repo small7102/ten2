@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        homejhjhjhj
+        homejhjhjhj发几个回复jkjkjkjkjkjk
     </div>
 </template>
 
