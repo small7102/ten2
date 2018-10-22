@@ -31,6 +31,8 @@ import ComponentContent from "./component-content";
 import { mapMutations, mapGetters, mapActions } from "vuex";
 import ConditionsSearch from '../search';
 
+console.log(ContentTopBar)
+
 const ALERT_WIDTH = 300
 const EDIT_WIDTH = 500
 
